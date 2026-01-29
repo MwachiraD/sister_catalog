@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact • Sister WhatsApp Catalog</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container row between center">
+      <div class="brand">
+        <span class="logo">🛍️</span>
+        <span id="brandName">Shop</span>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="delivery.html">Delivery</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h1>Contact</h1>
+      <p class="muted">Customers can click to chat instantly.</p>
+
+      <div class="grid2">
+        <div class="card inner">
+          <h2>WhatsApp</h2>
+          <p class="muted">Main ordering channel.</p>
+          <a id="waLink" class="btn primary" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+          <p class="tiny muted" style="margin-top:8px;">Edit your number in <code>config.js</code></p>
+        </div>
+
+        <div class="card inner">
+          <h2>Shop Location</h2>
+          <p class="muted">Edit this text with real location details.</p>
+          <ul class="bullets">
+            <li>Town: ________</li>
+            <li>Building: ________</li>
+            <li>Floor/Shop: ________</li>
+            <li>Working hours: ________</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card inner">
+        <h2>Social Links</h2>
+        <p class="muted">Add your Facebook/Instagram handles here.</p>
+        <ul class="bullets">
+          <li>Facebook: ________</li>
+          <li>Instagram: ________</li>
+          <li>TikTok: ________</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container row between center">
+      <span class="muted">© <span id="year"></span> <span id="footerShopName">Shop</span></span>
+      <a class="muted" href="index.html">Home →</a>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="utils.js"></script>
+  <script>
+    setBranding();
+    const wa = waLink("Hi! I want to ask about your products.");
+    document.getElementById("waLink").href = wa;
+  </script>
+</body>
+</html>

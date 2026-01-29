@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shop • Sister WhatsApp Catalog</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container row between center">
+      <div class="brand">
+        <span class="logo">🛍️</span>
+        <span id="brandName">Shop</span>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="shop.html" class="active">Shop</a>
+        <a href="delivery.html">Delivery</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="row between wrap gap">
+        <div>
+          <h1>Catalog</h1>
+          <p class="muted">Search, filter, then tap “Order on WhatsApp”.</p>
+        </div>
+
+        <div class="row gap wrap">
+          <input id="searchInput" class="input" placeholder="Search (e.g. dress, black, jeans)" />
+          <select id="categorySelect" class="input">
+            <option value="">All categories</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="status" class="status muted">Loading products…</div>
+      <div id="grid" class="grid"></div>
+      <div id="empty" class="muted" style="display:none;">No products found. Check your sheet or filters.</div>
+    </section>
+  </main>
+
+  <!-- Product Modal -->
+  <div id="modalBackdrop" class="modal-backdrop" style="display:none;">
+    <div class="modal card">
+      <div class="row between center">
+        <h2 id="modalTitle" style="margin:0;">Product</h2>
+        <button id="closeModal" class="icon-btn" aria-label="Close">✕</button>
+      </div>
+
+      <div id="modalImages" class="modal-images"></div>
+
+      <div class="row between center" style="margin-top:10px;">
+        <div>
+          <div class="price" id="modalPrice"></div>
+          <div class="muted" id="modalCategory"></div>
+        </div>
+        <span class="pill" id="modalStock"></span>
+      </div>
+
+      <p id="modalDesc" class="muted"></p>
+
+      <div class="row gap wrap">
+        <label class="muted">Size:</label>
+        <select id="modalSize" class="input"></select>
+      </div>
+
+      <div class="row gap wrap" style="margin-top:12px;">
+        <a id="modalOrder" class="btn primary" href="#" target="_blank" rel="noopener">Order on WhatsApp</a>
+        <button id="copyText" class="btn">Copy order message</button>
+      </div>
+
+      <p class="tiny muted" style="margin-top:10px;">
+        Tip: Ask customer for location + delivery method (rider/parcel).
+      </p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container row between center">
+      <span class="muted">© <span id="year"></span> <span id="footerShopName">Shop</span></span>
+      <a class="muted" href="contact.html">Need help? Contact →</a>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="utils.js"></script>
+  <script src="shop.js"></script>
+</body>
+</html>

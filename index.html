@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Home • Sister WhatsApp Catalog</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container row between center">
+      <div class="brand">
+        <span class="logo">🛍️</span>
+        <span id="brandName">Shop</span>
+      </div>
+      <nav class="nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="delivery.html">Delivery</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero card">
+      <h1 id="heroTitle">Sell faster with a clean catalog</h1>
+      <p class="muted">
+        Browse products, choose size, and order directly on WhatsApp.
+      </p>
+      <div class="row gap">
+        <a class="btn primary" href="shop.html">Open Catalog</a>
+        <a class="btn" id="whatsappBtn" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      </div>
+      <div class="note">
+        <strong>Tip:</strong> Put this website link in your Facebook/Instagram ads and WhatsApp status.
+      </div>
+    </section>
+
+    <section class="grid2">
+      <div class="card">
+        <h2>How it works</h2>
+        <ol class="steps">
+          <li>Customer opens your catalog</li>
+          <li>They pick item + size</li>
+          <li>They tap “Order on WhatsApp”</li>
+          <li>You confirm payment & delivery</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h2>Why this increases sales</h2>
+        <ul class="bullets">
+          <li>Looks professional (trust)</li>
+          <li>Faster ordering (less chatting)</li>
+          <li>Easy sharing (one link)</li>
+          <li>Works on any phone</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Featured items</h2>
+      <p class="muted">These come from your Google Sheet (featured=TRUE).</p>
+      <div id="featuredGrid" class="grid"></div>
+      <div id="featuredEmpty" class="muted" style="display:none;">No featured products yet. Add featured=TRUE in your Sheet.</div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container row between center">
+      <span class="muted">© <span id="year"></span> <span id="footerShopName">Shop</span></span>
+      <a class="muted" href="shop.html">Browse catalog →</a>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="utils.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

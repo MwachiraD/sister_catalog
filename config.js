@@ -2,7 +2,7 @@
 
 // WhatsApp number in international format WITHOUT '+'.
 // Example Kenya: 254712345678
-const WHATSAPP_NUMBER = "254705822343";
+const WHATSAPP_NUMBER = "+254705822343";
 
 // Your published Google Sheet CSV URL (Publish to web → CSV).
 // It should look like: https://docs.google.com/spreadsheets/d/e/<id>/pub?gid=0&single=true&output=csv

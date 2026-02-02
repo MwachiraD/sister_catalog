@@ -15,6 +15,8 @@
 html,body{ margin:0; padding:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: radial-gradient(1200px 500px at 10% 0%, rgba(31,111,235,.20), transparent 70%), var(--bg); color:var(--text); }
 
 a{ color:inherit; text-decoration:none; }
+.bullets a{ color:#5aa2ff; text-decoration:underline; text-underline-offset:2px; }
+.bullets a:hover{ color:#7fb3ff; }
 code{ background:rgba(255,255,255,.06); padding:2px 6px; border-radius:8px; }
 
 .container{ width:min(1100px, 92%); margin:0 auto; padding:18px 0; }
@@ -45,6 +47,8 @@ code{ background:rgba(255,255,255,.06); padding:2px 6px; border-radius:8px; }
 
 .input{ padding:10px 12px; border-radius:12px; border:1px solid var(--line); background:rgba(0,0,0,.2); color:var(--text); outline:none; min-width: 220px; }
 .input::placeholder{ color: rgba(169,179,207,.7); }
+.check{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:12px; border:1px solid var(--line); background:rgba(0,0,0,.2); color:var(--muted); }
+.check input{ accent-color: var(--btn); }
 
 .grid{ display:grid; grid-template-columns: repeat( auto-fit, minmax(220px, 1fr) ); gap:12px; margin-top:12px; }
 .grid2{ display:grid; grid-template-columns: repeat(2, minmax(0, 1fr) ); gap:12px; margin-top:12px; }

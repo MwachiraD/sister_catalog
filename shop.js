@@ -5,6 +5,8 @@ const gridEl = document.getElementById("grid");
 const emptyEl = document.getElementById("empty");
 const searchInput = document.getElementById("searchInput");
 const categorySelect = document.getElementById("categorySelect");
+const sortSelect = document.getElementById("sortSelect");
+const hideOutOfStock = document.getElementById("hideOutOfStock");
 
 // Modal elements
 const backdrop = document.getElementById("modalBackdrop");
@@ -28,6 +30,12 @@ function escapeHTML(s){
     .replaceAll("<","&lt;")
     .replaceAll(">","&gt;")
     .replaceAll('"',"&quot;");
+}
+
+function priceValue(p){
+  const raw = safe(p.price).replace(/[^0-9.]/g, "");
+  const num = parseFloat(raw);
+  return Number.isFinite(num) ? num : 0;
 }
 
 function productCard(p){
@@ -66,15 +74,26 @@ function fillCategories(products){
 function applyFilters(){
   const q = safe(searchInput.value).toLowerCase();
   const cat = safe(categorySelect.value);
+  const sort = safe(sortSelect?.value) || "newest";
+  const hide = !!(hideOutOfStock && hideOutOfStock.checked);
 
   const filtered = ALL.filter(p => {
     if(cat && p.category !== cat) return false;
     if(!q) return true;
     const hay = `${p.name} ${p.category} ${p.description} ${p.sizes?.join(" ")}`.toLowerCase();
     return hay.includes(q);
-  });
+  }).filter(p => (!hide || p.inStock));
 
-  render(filtered);
+  const sorted = filtered.slice();
+  if(sort === "price-asc"){
+    sorted.sort((a,b) => priceValue(a) - priceValue(b));
+  }else if(sort === "price-desc"){
+    sorted.sort((a,b) => priceValue(b) - priceValue(a));
+  }else{
+    sorted.sort((a,b) => (b._index ?? 0) - (a._index ?? 0));
+  }
+
+  render(sorted);
 }
 
 function render(products){
@@ -104,6 +123,7 @@ function openModal(product){
   const imgs = (product.images && product.images.length) ? product.images : [firstImage(product)];
   modalImages.innerHTML = imgs.map(src => `<img src="${src}" alt="${escapeHTML(product.name)}" loading="lazy" />`).join("");
 
+  modalOrder.style.display = product.inStock ? "" : "none";
   updateOrderLink();
 
   backdrop.style.display = "flex";
@@ -116,6 +136,7 @@ function closeModal(){
 
 function updateOrderLink(){
   if(!CURRENT) return;
+  if(!CURRENT.inStock) return;
   const size = modalSize.value || "";
   const msg = buildOrderMessage(CURRENT, size);
   modalOrder.href = waLink(msg);
@@ -152,11 +173,13 @@ copyTextBtn.addEventListener("click", async () => {
 
 searchInput.addEventListener("input", applyFilters);
 categorySelect.addEventListener("change", applyFilters);
+if(sortSelect) sortSelect.addEventListener("change", applyFilters);
+if(hideOutOfStock) hideOutOfStock.addEventListener("change", applyFilters);
 
 (async function init(){
   try{
     statusEl.textContent = "Loading products…";
-    ALL = await fetchProducts();
+    ALL = (await fetchProducts()).map((p, i) => ({ ...p, _index: i }));
     fillCategories(ALL);
     statusEl.textContent = `Loaded ${ALL.length} products`;
     setTimeout(() => statusEl.textContent = "", 1200);

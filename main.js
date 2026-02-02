@@ -12,13 +12,17 @@ const featuredEmpty = document.getElementById("featuredEmpty");
   if(!featuredGrid) return;
   try{
     const products = await fetchProducts();
-    const featured = products.filter(p => p.featured && p.inStock).slice(0, 8);
-    if(!featured.length){
+    const hasRealImage = (p) => p.images && p.images.length && /^https?:\/\//.test(p.images[0]);
+    const featured = products.filter(p => p.featured && p.inStock && hasRealImage(p)).slice(0, 8);
+    const fallback = products.filter(p => p.inStock && hasRealImage(p)).slice(0, 8);
+    const display = featured.length ? featured : fallback;
+    if(!display.length){
       featuredEmpty.style.display = "block";
+      featuredEmpty.textContent = "New items coming soon—chat on WhatsApp.";
       return;
     }
-    featuredGrid.innerHTML = featured.map(p => productCardHTML(p, true)).join("");
-    wireCardClicks(featuredGrid, featured);
+    featuredGrid.innerHTML = display.map(p => productCardHTML(p, true)).join("");
+    wireCardClicks(featuredGrid, display);
   }catch(err){
     featuredEmpty.style.display = "block";
     featuredEmpty.textContent = "Could not load featured products. Check config.js + Sheet publish settings.";
@@ -45,8 +49,8 @@ function productCardHTML(p, compact=false){
       </div>
       <div class="pactions">
         <a class="btn primary" href="${baseUrl("/shop.html")}" aria-label="View in shop">View</a>
-        <a class="btn whatsapp" target="_blank" rel="noopener"
-           href="${waLink(buildOrderMessage(p, p.sizes?.[0] || ""))}">Order</a>
+        ${p.inStock ? `<a class="btn whatsapp" target="_blank" rel="noopener"
+           href="${waLink(buildOrderMessage(p, p.sizes?.[0] || ""))}">Order</a>` : ""}
       </div>
     </div>
   </article>`;

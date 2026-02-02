@@ -3,7 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Home • Sister WhatsApp Catalog</title>
+  <title>Home - Shop</title>
+  <meta property="og:title" content="Tabz Collection" />
+  <meta property="og:description" content="Browse Tabz Collection products and order on WhatsApp." />
+  <meta property="og:image" content="https://dummyimage.com/1200x630/0b0f17/e9eefc.png&text=Tabz%20Collection" />
+  <meta property="og:url" content="/" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -24,16 +28,13 @@
 
   <main class="container">
     <section class="hero card">
-      <h1 id="heroTitle">Sell faster with a clean catalog</h1>
+      <h1 id="heroTitle">Tabz Collection</h1>
       <p class="muted">
-        Browse products, choose size, and order directly on WhatsApp.
+        Women’s dresses • Order on WhatsApp • Delivery available.
       </p>
       <div class="row gap">
         <a class="btn primary" href="shop.html">Open Catalog</a>
         <a class="btn" id="whatsappBtn" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
-      </div>
-      <div class="note">
-        <strong>Tip:</strong> Put this website link in your Facebook/Instagram ads and WhatsApp status.
       </div>
     </section>
 
@@ -41,29 +42,29 @@
       <div class="card">
         <h2>How it works</h2>
         <ol class="steps">
-          <li>Customer opens your catalog</li>
-          <li>They pick item + size</li>
-          <li>They tap “Order on WhatsApp”</li>
-          <li>You confirm payment & delivery</li>
+          <li>Browse our catalog</li>
+          <li>Pick your item and size</li>
+          <li>Tap “Order on WhatsApp”</li>
+          <li>We confirm delivery details</li>
         </ol>
       </div>
 
       <div class="card">
-        <h2>Why this increases sales</h2>
+        <h2>Why shop with us</h2>
         <ul class="bullets">
-          <li>Looks professional (trust)</li>
-          <li>Faster ordering (less chatting)</li>
-          <li>Easy sharing (one link)</li>
+          <li>Fast responses on WhatsApp</li>
+          <li>Clear sizing and pricing</li>
+          <li>Easy delivery coordination</li>
           <li>Works on any phone</li>
         </ul>
       </div>
     </section>
 
     <section class="card">
-      <h2>Featured items</h2>
-      <p class="muted">These come from your Google Sheet (featured=TRUE).</p>
+      <h2>New arrivals</h2>
+      <p class="muted">New arrivals</p>
       <div id="featuredGrid" class="grid"></div>
-      <div id="featuredEmpty" class="muted" style="display:none;">No featured products yet. Add featured=TRUE in your Sheet.</div>
+      <div id="featuredEmpty" class="muted" style="display:none;">No products available yet. Please check back soon.</div>
     </section>
   </main>
 

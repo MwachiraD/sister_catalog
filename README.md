@@ -1,4 +1,4 @@
-# Sister WhatsApp Catalog (Free) — Google Sheets → Website → WhatsApp Orders
+# Tabz Collection WhatsApp Catalog (Free) - Google Sheets -> Website -> WhatsApp Orders
 
 This is a **static website** you can host for free (GitHub Pages / Netlify / Vercel).
 Products are stored in **Google Sheets**. The website fetches the sheet as **CSV** and renders a catalog.
